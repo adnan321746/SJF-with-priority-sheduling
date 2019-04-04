@@ -15,5 +15,18 @@ printf("\n\tEnter the burst time of %d process :",i+1);
 scanf(" %d",&bt[i]);
 printf("\tEnter the arrival time of %d process :",i+1);
 scanf(" %d",&at[i]);
+ 
+}
+ printf("----------------------------------------------------------------------------------------------------------------------------->");
+
+printf("\nProcess\t        Burst\t Arrival\t Waiting\t Turn-around\t    Priority" );
+for(i=0;i<n;i++)
+{
+printf("\n process:%d\t %d\t %d\t\t %d\t\t\t%d \t\t%f",p[i],bt[i],at[i],wt[i],tt[i],prr[i]);
+}
+ 
+printf("\n\nAVERAGE WAITING TIME : %f",wavg);
+printf("\nAVERAGE TURN AROUND TIME : %f",tavg);
+return 0;
 }
 }
