@@ -29,9 +29,9 @@ scanf(" %d",&at[i]);
  
 for(i=0;i<n;i++)
 {
-for(j=0;j<n;j++)
+for(j=1;j<n;j++)
 {
-if(at[i]<at[j])
+if(at[i]>at[j])
 {
 temp=p[j];
 p[j]=p[i];
