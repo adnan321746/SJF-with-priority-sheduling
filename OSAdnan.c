@@ -1,3 +1,11 @@
+ /*Consider a scheduling approach which is non pre-emptive similar to shortest job next in nature. 
+ The priority of each job is dependent on its estimated run time, and also the amount of time it 
+ has spent waiting. Jobs gain higher priority the longer they wait, which prevents indefinite postponement. 
+ The jobs that have spent a long time waiting compete against those estimated to have short run times. 
+ The priority can be computed as :  priority = 1 + waiting time /estimated run time 
+ Using the data given below compute the waiting time and turnaround time for each process and 
+ average waiting time and average turnaround time. */
+
 #include<stdio.h>
 int main()
 {
@@ -36,6 +44,38 @@ bt[j]=bt[i];
 bt[i]=temp;
 }
 }
+}
+  
+/*Sorting according to Burst time,
+Execution time and Arrival Time*/
+ 
+for(j=0;j<n;j++)
+{
+btime=btime+bt[j];
+min=bt[k];
+for(i=k;i<n;i++)
+{
+if (btime>=at[i] && bt[i]<min)
+{
+temp=p[k];
+p[k]=p[i];
+p[i]=temp;
+temp=at[k];
+at[k]=at[i];
+at[i]=temp;
+temp=bt[k];
+bt[k]=bt[i];
+bt[i]=temp;
+}
+}
+k++;
+}
+wt[0]=0;
+for(i=1;i<n;i++)
+{
+sum=sum+bt[i-1];
+wt[i]=sum-at[i];
+wsum=wsum+wt[i];
 }
  printf("----------------------------------------------------------------------------------------------------------------------------->");
 
