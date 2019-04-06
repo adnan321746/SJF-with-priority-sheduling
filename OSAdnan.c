@@ -137,7 +137,7 @@ printf("\nprocess: %d\t %d\t %d\t\t %d\t\t\t%d \t\t %d",p[i],bt[i],at[i],wt[i],t
  
 printf("\n\nAVERAGE WAITING TIME : %f",wavg);
 printf("\nAVERAGE TURN AROUND TIME : %f",tavg);
-printf("\n\n\PRESS 1 FOR RESTART THE PROGRAM \tPRESS ANYTHING FOR EXIT : ");
+printf("\n\n PRESS 1 FOR RESTART THE PROGRAM \tPRESS ANYTHING FOR EXIT : ");
 scanf("%d",&again);
 system("cls");
 }
