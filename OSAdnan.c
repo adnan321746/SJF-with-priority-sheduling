@@ -77,6 +77,38 @@ sum=sum+bt[i-1];
 wt[i]=sum-at[i];
 wsum=wsum+wt[i];
 }
+ // sorting according to calculated priority 
+
+for(i=1;i<n;i++)
+{
+	prr[i]=1+(wt[i]/bt[i]);
+	prr[0]=0;
+}
+for(i=2;i<n;i++)
+{
+for(j=3;j<n;j++)
+{
+
+if(prr[i]>prr[j])
+{
+temp=p[j];
+p[j]=p[i];
+p[i]=temp;
+temp=at[j];
+at[j]=at[i];
+at[i]=temp;
+temp=bt[j];
+bt[j]=bt[i];
+bt[i]=temp;
+temp=prr[j];
+prr[j]=prr[i];
+prr[i]=temp;
+temp=wt[j];
+wt[j]=wt[i];
+wt[i]=temp;
+}
+}
+}
  printf("----------------------------------------------------------------------------------------------------------------------------->");
 
 printf("\nProcess\t        Burst\t Arrival\t Waiting\t Turn-around\t    Priority" );
