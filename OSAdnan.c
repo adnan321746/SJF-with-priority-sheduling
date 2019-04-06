@@ -5,15 +5,21 @@
  The priority can be computed as :  priority = 1 + waiting time /estimated run time 
  Using the data given below compute the waiting time and turnaround time for each process and 
  average waiting time and average turnaround time. */
-
-#include<stdio.h>
+ 
+ #include<stdio.h>
+ #include<conio.h>
+ #include<stdlib.h>
+ 
 int main()
 {
-int i,n,p[10]={1,2,3,4,5,6,7,8,9,10},k=1,btime=0;
-int bt[10],tt[10],ta=0,sum=0,j,at[10],wt[10];
-float tavg=0,tsum=0,wavg=0,temp,wsum=0,prr[10];
+int i,n,p[10]={1,2,3,4,5,6,7,8,9,10},min,k=1,btime=0,again=1,prr[10];
+int bt[10],temp,j,at[10],wt[10],tt[10],ta=0,sum=0;
+float wavg=0,tavg=0,tsum=0,wsum=0;
+printf(" CODE BY ADNAN KHAN-------\n");
+while(again==1)
+{
 
-printf(" -------Code by Adnan Khan -------\n");
+
 printf("\nEnter the No. of processes :");
 scanf("%d",&n);
  
@@ -21,11 +27,11 @@ for(i=0;i<n;i++)
 {
 printf("\n\tEnter the burst time of %d process :",i+1);
 scanf(" %d",&bt[i]);
-printf("\tEnter the arrival time of %d process :",i+1);
+printf("\t Enter the arrival time of %d process :",i+1);
 scanf(" %d",&at[i]);
- 
 }
- /*Sorting According to Arrival Time*/
+ 
+/*Sorting According to Arrival Time*/
  
 for(i=0;i<n;i++)
 {
@@ -45,7 +51,7 @@ bt[i]=temp;
 }
 }
 }
-  
+ 
 /*Sorting according to Burst time,
 Execution time and Arrival Time*/
  
@@ -55,7 +61,7 @@ btime=btime+bt[j];
 min=bt[k];
 for(i=k;i<n;i++)
 {
-if (btime>=at[i] && bt[i]<min)
+if (btime>at[i] && bt[i]<min)
 {
 temp=p[k];
 p[k]=p[i];
@@ -77,7 +83,7 @@ sum=sum+bt[i-1];
 wt[i]=sum-at[i];
 wsum=wsum+wt[i];
 }
- // sorting according to calculated priority 
+// sorting according to calculated priority 
 
 for(i=1;i<n;i++)
 {
@@ -109,16 +115,30 @@ wt[i]=temp;
 }
 }
 }
- printf("----------------------------------------------------------------------------------------------------------------------------->");
-
-printf("\nProcess\t        Burst\t Arrival\t Waiting\t Turn-around\t    Priority" );
+ 
+wavg=(wsum/n);
 for(i=0;i<n;i++)
 {
-printf("\n process:%d\t %d\t %d\t\t %d\t\t\t%d \t\t%f",p[i],bt[i],at[i],wt[i],tt[i],prr[i]);
+ta=ta+bt[i];
+tt[i]=ta-at[i];
+tsum=tsum+tt[i];
+}
+ 
+tavg=(tsum/n);
+ 
+ printf("----------------------------------------------------------------------------------------------------------------------------->");
+
+
+printf("\n\nProcess\t     Burst\t Arrival\t Waiting\t Turn-around   \t priority" );
+for(i=0;i<n;i++)
+{
+printf("\nprocess: %d\t %d\t %d\t\t %d\t\t\t%d \t\t %d",p[i],bt[i],at[i],wt[i],tt[i],prr[i]);
 }
  
 printf("\n\nAVERAGE WAITING TIME : %f",wavg);
 printf("\nAVERAGE TURN AROUND TIME : %f",tavg);
-return 0;
+printf("\n\n\PRESS 1 FOR RESTART THE PROGRAM \tPRESS ANYTHING FOR EXIT : ");
+scanf("%d",&again);
+system("cls");
 }
 }
