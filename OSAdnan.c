@@ -15,7 +15,7 @@ int main()
 int i,n,p[10]={1,2,3,4,5,6,7,8,9,10},min,k=1,btime=0,again=1,prr[10];
 int bt[10],temp,j,at[10],wt[10],tt[10],ta=0,sum=0;
 float wavg=0,tavg=0,tsum=0,wsum=0;
-printf(" CODE BY ADNAN KHAN-------\n");
+printf(" CODE BY ADNAN KHAN K17BK A19-------\n");
 while(again==1)
 {
 
@@ -51,7 +51,26 @@ bt[i]=temp;
 }
 }
 }
- 
+
+// Sorting According to Burst time to run 2nd process according to SJF
+ for(i=1;i<n;i++)
+{ 
+for(j=2;j<n;j++)
+{
+if(bt[i]>bt[j] && bt[0]>at[i])
+{
+temp=p[j];
+p[j]=p[i];
+p[i]=temp;
+temp=at[j];
+at[j]=at[i];
+at[i]=temp;
+temp=bt[j];
+bt[j]=bt[i];
+bt[i]=temp;
+}
+}
+}
 /*Sorting according to Burst time,
 Execution time and Arrival Time*/
  
@@ -85,16 +104,12 @@ wsum=wsum+wt[i];
 }
 // sorting according to calculated priority 
 
-for(i=1;i<n;i++)
-{
-	prr[i]=1+(wt[i]/bt[i]);
-	prr[0]=0;
-}
 for(i=2;i<n;i++)
 {
+	prr[i]=1+(wt[i]/bt[i]);
 for(j=3;j<n;j++)
 {
-
+prr[j]=1+(wt[j]/bt[j]);
 if(prr[i]>prr[j])
 {
 temp=p[j];
